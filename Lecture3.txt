@@ -1,0 +1,60 @@
+//First part of lecture on using CS50 IDE
+    -CTRL S to save files
+    -Files will always be accessible after exiting IDE
+//Command Line Args
+    $ ls == 'list' will show current file directory
+    $ cd (folder name) == will put you in this specific folder to executre commands
+        - $cd Notes will put you in Notes folder
+    $rm (file) == will remove file from folder directory you're in
+    $mkdir (folder) == will make a folder
+    $rmdir (folder) == will remove directory
+//check50
+    - requires entering directory of assignment
+    - check50 cs50/2018/fall/hello == how we would have used check50 for hello pset
+//debug50
+    -TO USE == debug50 ./file
+    -Need to set breakpoints == will pause on that line of code
+    -Then can "Step Over" the individual code
+
+
+//String is not a data type in C
+    -string == char*
+    -char* stores address of a char == a pointer
+    -In memory, string is displayed as |s|t|r|i|n|g|\0|
+    -When we use 'get_string' == returning the location of the start of the string in memory
+    -ints. floats, chars are all returned as actual value but not strings
+//strcmp
+    -strcmp == string compare
+    -returns 0 if strings are equal
+    -returns positive value if 'x' comes before 'y' alphabetically
+    -returns negative value if 'x' comes after 'y' alphabetically
+//Using return
+    -Stops segmentation fault error
+    -return 0 == everything worked
+    -return 1 == if error
+//NULL
+    -if x == NULL (if x doesn't have a pointer)
+    -if !x
+//malloc
+    -malloc == memory allocate == give me a chunk of memory!
+    -Have to explain how much memory needed
+    -can use 'sizeof' fxn
+        malloc(strlen(variable) + 1) == 1 is for the null character
+    -Then need to copy string into the allocated memory
+        for (int i = 0, n = strlen(s); i <= n; i++)
+        {
+            x[i] = y[i]
+        }
+//strcpy
+    -strcpy == string copy
+    -streamlines the "copy string into allocated memory" step above
+    -strcpy(x, y) == copy x into y
+//free
+    -Need to free memory to prevent memory leak
+    - free(x)
+//scanf
+    -
+    - &x gives address of
+//make own datatype
+    -typedef 'something'
+

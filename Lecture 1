@@ -1,0 +1,40 @@
+# How to simplify? Don't need to evaluate last line
+
+if (x < y)
+{
+    printf("x is less than y\n");
+}
+else if (x > y)
+{
+printf("x is greater than y\n");
+}
+else if (x == y)
+{
+    printf("x is equal to y\n");
+}
+
+# How to induce a forever loop?
+
+while (true)
+{
+    printf("hello, world\n");
+}
+
+# How to induce a loop for 50x? for = repeat in C
+# i++ is equivalent to i = i + 1
+
+for (int i = 0; i < 50; i++)
+{
+    printf("hello, world\n");
+}
+
+# How to send a message "What is your name" then wait for user input (answer)?
+# %s is a placeholder saying "print this inputted string"
+
+string answer = get_string("What's your name?\n");
+printf("%s", answer);
+
+# How to join strings?
+
+string answer = get_string(What's your name?\n");
+printf("hello, %s", answer);

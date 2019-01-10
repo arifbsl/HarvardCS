@@ -1,0 +1,89 @@
+MVC = Organize different code in different files
+    - CSS in one file, HTML in another file
+    -Model?
+
+from flask import session
+    - session = "hand-stamp" idea
+    - session = python dictionary
+        - Can index into with any word: session[item]
+        - Can store anything in it--like a number
+
+Well-designed websites store only "hand-stamp" on server
+    - Sensitive things stored in csv, RAM, file
+
+DATABASES + SQL!!!-----------------------------------------------------------------
+
+- Databases in computer world are the same thing as spreadsheets
+- Different files within the database are referred to as TABLES
+    - Tables are the equivalent of two different sheets in the same excel file
+
+SQL LITE----------------------------------------------------------------------------
+- Datatypes:
+    - Blob
+    - Integer
+        - smallint (2 bytes)
+        - integer (4 bytes)
+        - bigint (8 bytes)
+    - Numberic
+        - boolean
+        - date
+        - datetime
+        - numberic(scale, precision) == specify how many decimal points of precision (in finance it's typically 4 decimal places)
+        - time
+        - timestamp
+    - Real
+        - real
+        - double precision
+    - Text
+        - char(n) -- why ever use this? it uses a fixed number of bytes -- faster for computer and columns are perfectly symmetrical
+        - varchar(n) -- allows you to specify an upper bound of how many bytes to dedicate but database won't waste extra
+        - text -- to store 10s of thousands -- way more than varchar
+
+** Use POSTGRES for high-performing website
+
+Initialize sqlite:
+    sqlite3 froshims0
+
+from cs50 import SQL
+    - Gives us a functino called execute
+        - Allows us to access any SQL command but in python code
+
+# Joining data from separate tables together (1:32 in lecture)
+SELECT * FROM Album, Artist WHERE Album.ArtistId = Artist.ArtistId;
+ - This = "Select everything from two tables (Album, Artist), but only do so
+    Album tables, ArtistId columns has the same value as Artist table, ArtistId
+    columns"
+
+OR:
+
+# 1:34 in lecture
+SELECT * FROM Artist JOIN Album ON Artist.ArtistId = Album.ArtistId;
+ - This = "Select everything from the result of joining the two tables
+    and how join them, well join on when those two things = each other"
+
+# How do we search for titles in the database that have the word "Rock" ?
+SELECT * FROM Album WHERE Title LIKE '%Rock%';
+    - the '% %' just grants functionality for things before or after the word
+
+SQL FUNCTIONS -------------------------------
+- AVG
+- COUNT
+- MAX
+- MIN
+- SUM
+- ETC
+
+Race Conditions -------------------------------------------------------
+- When two people are trying to do the same thing/make the same request
+    at the same exact time
+    ex.) two people registering for the same username at the exact same
+        time
+- State of something can change
+- How to solve this?
+    - Signal to the database to commit to a task and while doing the
+        task, block out all other commits until the first commit is
+        done
+SQL Injection Attacks -------------------------------------------------
+- Can defend against this by removing the f-syntax in application.py:
+    rows = db.execute("SELECT * FROM registrants WHERE name = :name", name=q)
+        - Equivalent to: "plugin this value here"

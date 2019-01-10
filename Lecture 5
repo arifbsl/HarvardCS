@@ -1,0 +1,269 @@
+TCP/IP---------------------------------------------------------
+
+IP = Unique Address
+    - #.#.#.#
+    - 0-255 (4 series of 8 bits)
+    -Also has to include the number 80 (which equals HTTP for internet browsing)
+    Ex.) 1.2.3.4:80
+
+URL = Uniform Resource Locator
+    - Address of a server
+    - What is relationship from URL to IP?
+        -DNS
+    - what is www?
+        -A subdomain
+    -URL loads a file
+
+DNS Server
+    - Purpose is to run servers that converts domain names to IP addresses
+
+HTTP
+    - Hyper Text Transfer Protocol
+
+Request to server --    (Get me the following website)
+                        GET / HTTP/1.1 (Get me a file of index.html
+                        Host: www.example.com
+
+Response -- HTTP/1.1 200 OK
+            Content-Type: text/html
+
+
+HTML-----------------------------------------------------------
+
+Structure Format:
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>
+            hello, title
+        </title>
+    </head>
+    <body>
+        hello, body
+    </body>
+</html>
+
+//Paragraphs:
+<p> </p>
+    - Need one for each paragraph
+
+//Headings:
+    <h1> </h1>  Big and Bold
+    <h2> </h2>  Smaller
+    <h3> </h3>  Smaller
+
+//Table:
+    <tr>                (table row)
+        <td> 1 </td>    (table data)
+    </tr>
+
+
+//Image Embedding:
+    <img src="URL">
+
+    -Can save images locally to the IDE and name + refer to them in embedding as img.jpg
+
+    <img alt="photo of ____" src="img.jpg">
+        - alt = is a textual description of image for screen readers
+
+//Link Embedding:
+    <a href="URL"> </a>
+    a = anchor
+    Visit <a href="URL"> Harvard </a>
+
+//Boldface
+    <strong> </strong>
+
+//Testing Correctness of Code
+-Go to:
+    validator.w3.org/
+
+//Question mark (?)
+-Indicates user input in a URL
+    ex.) ?q=cats (input on google)
+
+//User Input
+<body>
+    <form action = "https://www.google.com/search" method="get">
+        <input>
+    </form>
+</body>
+
+//Symbols
+&#NUMBER
+
+CSS------------------------------------------------------------
+
+//HEADER AND FOOTER:
+- header, footer, and main are all "children" of "parent" body
+
+<body>
+    <header style="font-size: large; text-align: center">
+     TEXT
+    </header>
+    <main style="font-size: medium; text-align: center">
+    </main>
+    <footer style="font-size: small; text-align: center">
+    </footer>
+</body>
+
+- Can convert this ^ to this:
+
+<body style="text-align: center">
+    <header style="font-size: large">
+     TEXT
+    </header>
+    <main style="font-size: medium">
+    </main>
+    <footer style="font-size: small">
+    </footer>
+</body>
+
+- BUT this is bad because we are combining HTML and CSS
+
+//CLASSES
+<html lang="en">
+    <head>
+        <style>
+            .something
+            {
+                definition
+            }
+
+
+- The .SOMETHING initiates a class
+
+//STYLING TAG NAMES
+
+- This will apply a specific CSS style globally to body, head, etc. :
+
+<html lang="en">
+    <head>
+        <style>
+            BODY
+            {
+                SOME CSS STYLE
+            }
+
+
+//BEST PRACTICE FOR CSS
+- Exclude all CSS on html file and link to the CSS file in the HTML file
+
+<html lang"en">
+    <head>
+        <line href="something.css" rel="stylesheet">
+        <title> something </title>
+
+JAVASCRIPT-----------------------------------------------------
+
+//COMPARISON TO C LANUAGE
+
+
+int counter = 0;
+vs
+let counter = 0;
+
+counter++;
+vs
+counter++;
+
+for (int i = 0; i < 50; i++)
+vs
+let (int i = 0; i < 50; i++
+
+if, else, while all same in both
+
+//EDITING HTML FILE WITH JAVASCRIPT
+
+-Under header add <script>
+
+html
+    head
+        <script>
+        </script>
+
+//SYNTAX
+
+int main(void) can be simplified to:
+    function name()
+
+//SPECIAL FUNCTIONS
+
+1.) To prompt a message
+{
+    alert(" ")
+}
+
+
+2.) To initialize something after user input
+<body>
+    <form onsubmit="greet();">
+        <input
+
+
+3.) To use user input in a response
+<script>
+    function greet()
+    {
+        let name = document.querySelector("#name").value;
+        alert('hello, ' + name);
+    }
+...
+<body>
+        <form onsubmit="greet(); return false;">
+            <input id="name" type="text">
+            <input type="submit">
+-document is a structure and refers to the whole html document
+-querySelector is a function within document which selects the node in html document structure
+
+
+4.) Autocomplete and Autofocus (1:56ish)
+<input Autocomplete=
+
+
+5.) Creating buttons
+<body>
+    <button id="red">R</button>     == tag name, attribute = value (UNIQUE IDENTIFIED), label = R
+    <script>
+        let body = document.querySelectro('body');              == Hey browser, get me a variable called body and store in that variable the node 'body' (so that I have access to it)
+        document.querySelector('#red').onclick = function() {   == Hey browser, select the node that has a UNIQUE IDENTIFIER = red. Hey browser, on click, execute this function
+            body.stylebackgroundColor = 'red'                   == Hey browser, modify the background color of the style of the body and make it Red
+        };
+
+- onclick = example of Event Listener
+    - all tags or nodes have Event Listener
+    - Can associate function with these
+
+
+6.) Creating Selection Events
+
+<body>
+    <p>
+    </p>
+    <select>
+        <option value="xx-large">xx-large</option>              == In between " " is what computer sees, plaintext is what user sees
+
+    </select>
+    <script>
+
+        document.querySelector('select').onchange=function {                    == when select thing is changed (.onchanged) do this function {
+            document.querySelector('body').style.fontSize = this.value;         == Function = Select from the document, the "body" tag, get access to its style and change the font size
+        };                                                                          to this
+
+
+7.) Geolocating Your User
+...
+<body>
+    <script>
+
+        navigator.geolocation.getCurrentPosition(function(position) {                       == navigator(a global variable) has a feature(geolocation) which has a fxn, getCurrentPosition
+            document.write(position.coords.latitude + ", + position.coords.longitude);      ==
+            });
+
+
+
+
+
+
