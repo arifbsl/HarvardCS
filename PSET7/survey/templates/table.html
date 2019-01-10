@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <div class="table">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>CS50 Role</th>
+                <th>Global Region</th>
+                <th>Country</th>
+            </tr>
+            <tr>
+                {% for response in responses %}
+                <td>{{ response["Name"] }}</td>
+                <td>{{ response["CS50 Role"] }}</td>
+                <td>{{ response["Origin"] }}</td>
+                <td>{{ response["Country"] }}</td>
+            </tr>
+        </table>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+speller.c Summary:
+    - calls load on the dictionary file
+        - dictionary contains valid words, one per line
+    - calls check on each word in the text file and prints all misspelled words
+    - calls size to determine number of words in dictionary
+    - calls unload to free up memory
+
+    TODO:
+        1.) Load -- load dictionary into a datastructure that we create
+        2.) Check -- checks that data structure to see if given word is in dictionary
+        3.) Size -- returns number of words in dictionary
+        4.) Unload -- frees the dictionary from memory
+        
+---------------------------------------------------------------------------------------
+SPELLER/LOAD WALKTHROUGH
+
+Hash table = array of buckets
+    - An array of linked lists
+    - Each bucket is a linked list
+
+Hash function = returns the bucket that a given key belongs to
+
+Linked List
+    - Made up of nodes
+    
+Nodes
+    - Each node has a value, as well as a pointer to the next node

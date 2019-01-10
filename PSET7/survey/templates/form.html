@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">CS50 Personnel Origins</h1><br>
+    <h5 class="mb-3">Name</h5>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form action="/form" method="post">
+        <input class="nm" autocomplete="off" autofocus name="name" placeholder="Name" type="text" ><br>
+        <br>
+
+        <h5 class="mb-3">What is your role in CS50?</h5>
+        <div class="poll">
+            <input type="radio" name="position" value="student">Student<br>
+            <input type="radio" name="position" value="staff">Staff<br>
+            <input type="radio" name="position" value="other">Other
+        </div><br>
+
+        <h5 class="mb-3">Where are you from?</h5>
+        <!-- Formatting from: http://getbootstrap.com/docs/4.1/components/dropdowns/ -->
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Global Region
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">Africa</a>
+                <a class="dropdown-item" href="#">Antarctica</a>
+                <a class="dropdown-item" href="#">Asia</a>
+                <a class="dropdown-item" href="#">Australia</a>
+                <a class="dropdown-item" href="#">Europe</a>
+                <a class="dropdown-item" href="#">North America</a>
+                <a class="dropdown-item" href="#">South America</a>
+            </div>
+        </div><br>
+
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <input class="country" autocomplete="off" autofocus name="country" placeholder="Country" type="text">
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Error checking for user-input
+        document.querySelector('form').onsubmit = function() {
+            if (!document.querySelector('input.nm').value) {
+                alert('Please enter your name');
+                return false;
+            }
+            else if(!document.querySelector('div.poll').value) {
+                alert('Please enter your country information')
+                return false;
+            }
+            else if (!document.querySelector('div.dropdown-menu').value) {
+                alert('Please provide your global information')
+                return false;
+            }
+            else if(!document.querySelector('input.country').value) {
+                alert('Please enter your country information')
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+{% endblock %}
